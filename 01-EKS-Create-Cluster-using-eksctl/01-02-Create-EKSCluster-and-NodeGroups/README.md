@@ -63,10 +63,10 @@ eksctl utils associate-iam-oidc-provider --region us-east-1  --cluster eksdemo1 
 eksctl create nodegroup --cluster=eksdemo1 \
                         --region=us-east-1 \
                         --name=eksdemo1-ng-public1 \
-                        --node-type=t3.medium \
+                        --node-type=t2.micro \
                         --nodes=2 \
-                        --nodes-min=2 \
-                        --nodes-max=4 \
+                        --nodes-min=1 \
+                        --nodes-max=2 \
                         --node-volume-size=20 \
                         --ssh-access \
                         --ssh-public-key=kube-demo \
@@ -75,7 +75,9 @@ eksctl create nodegroup --cluster=eksdemo1 \
                         --external-dns-access \
                         --full-ecr-access \
                         --appmesh-access \
-                        --alb-ingress-access 
+                        --alb-ingress-access
+                        
+ eksctl create nodegroup --cluster=eksdemo1 --region=us-east-1 --name=eksdemo1-ng-public1 --node-type=t2.micro --nodes=2 --nodes-min=1 --nodes-max=2 --node-volume-size=20 --ssh-access --ssh-public-key=kube-demo --managed --asg-access --external-dns-access --full-ecr-access --appmesh-access --alb-ingress-access  
 ```
 
 ## Step-05: Verify Cluster & Nodes
